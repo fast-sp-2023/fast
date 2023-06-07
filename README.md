@@ -4,7 +4,7 @@
 
 Our paper: Mingqing Kang, Yichao Xu, Song Li, Rigel Gjomemo, Jianwei Hou, V.N. Venkatakrishnan, and Yinzhi Cao, Scaling JavaScript Abstract Interpretation to Detect and Exploit Node.js Taint-style Vulnerability, to appear in the Proceedings of the IEEE Symposium on Security and Privacy (Oakland), 2023.
 
-See [the wiki](./wiki) for documentation.
+See [the wiki](../../wiki) for documentation.
 
 ---
 
