@@ -1205,15 +1205,15 @@ def setup_json(G: Graph):
     G.add_blank_func_as_prop('stringify', console_obj, string_returning_func)
 
 
-def json_parse(G: Graph, caller_ast, extra, _, text=NodeHandleResult(), reviver=NodeHandleResult()):
-    json_strings, sources, _ = to_values(G, text, caller_ast)
+def json_parse(G: Graph, call_ast, extra, _, text=NodeHandleResult(), reviver=NodeHandleResult()):
+    json_strings, sources, _ = to_values(G, text)
     returned_objs = []
     used_objs = set()
     for i, json_string in enumerate(json_strings):
         obj = opgen.analyze_json_python(G, json_string,
-            extra=extra, call_ast=caller_ast)
+            extra=extra, call_ast=call_ast)
         if obj is None:
-            obj = G.add_obj_node(ast_node=caller_ast, js_type=None, value=wildcard)
+            obj = G.add_obj_node(ast_node=call_ast, js_type=None, value=wildcard)
         for s in sources[i]:
             add_contributes_to(G, [s], obj)
             used_objs.add(s)

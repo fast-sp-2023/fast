@@ -116,6 +116,8 @@ class Graph:
 
         self.vul_type = None
 
+        self.exec_counter_limit = 100
+
         # source code taint highlighting
         self.obj_to_ast = defaultdict(lambda: DictCounter())
         self.highlighted_obj_nodes = set()

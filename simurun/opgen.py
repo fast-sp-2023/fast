@@ -1107,7 +1107,7 @@ def handle_template(G: Graph, ast_node, extra=ExtraInfo()):
     children = G.get_ordered_ast_child_nodes(ast_node)
     if len(children) == 0:
         return NodeHandleResult(ast_node=ast_node, 
-                                values=[""], value_sources=[ast_node])
+                                values=[""], value_sources=[[ast_node]])
     if len(children) == 1:
         return handle_node(G, children[0], extra)
     results = []
@@ -3236,7 +3236,7 @@ def decl_function(G, node_id, func_name=None, obj_parent_scope=None,
         G.add_obj_as_prop('name', node_id, 'string', func_name, added_obj)
 
     param_list = G.get_child_nodes(node_id, edge_type='PARENT_OF',
-        child_type='AST_PARAM_LIST')
+        child_type='AST_PARAM_LIST')[0]
     params = G.get_ordered_ast_child_nodes(param_list)
     length = len(params)
     if length > 0:
@@ -5012,7 +5012,7 @@ def analyze_json(G, json_str, start_node_id=0, extra=None):
     G.import_from_string(result)
     return handle_node(G, str(start_node_id), extra)
 
-def analyze_json_python(G, json_str, extra=None, caller_ast=None):
+def analyze_json_python(G: Graph, json_str, extra=None, call_ast=None):
     json_str = str(json_str)
     if json_str is None:
         return None
@@ -5021,7 +5021,7 @@ def analyze_json_python(G, json_str, extra=None, caller_ast=None):
         logger.debug('Python JSON parse result: ' + str(py_obj))
     except json.decoder.JSONDecodeError:
         return None
-    return G.generate_obj_graph_for_python_obj(py_obj, ast_node=caller_ast)
+    return G.generate_obj_graph_for_python_obj(py_obj, ast_node=call_ast)
 
 def handle_var_prop_name(G: Graph, exp, extra=ExtraInfo()) -> NodeHandleResult:
     if '.' in exp:
