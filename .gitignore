@@ -1,0 +1,90 @@
+# global
+*.pyc
+logs
+*.log
+*.csv
+*.tsv
+*.dat
+*.out
+/.env
+/.venv
+
+# esprima-csv
+node_modules/
+/node_modules/
+/esprima-joern/*.csv
+/esprima-joern/log
+out.dat
+
+# simurun
+/log
+/*.csv
+/tmpcsv/
+/simurun/*.csv
+/import2neo4j/*.csv
+/simurun/out.dat
+/simurun/log
+/simurun/*.log
+/npmtest/run_tmp/*.js
+*/run_tmp/*.js
+status-*.txt
+cf_paths.ndjson
+/npmtest/node_modules
+/npmtest/extracted_packages
+
+# vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# vim
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# macOS
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

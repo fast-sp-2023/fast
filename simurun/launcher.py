@@ -123,8 +123,6 @@ def main():
     if args.exploit:
         G.auto_exploit = args.exploit
         args.module = True
-    if args.debug:
-        args.interactive = True
     if args.print or args.interactive:
         level = logging.DEBUG if args.print else logging.INFO
         logger = create_logger("main_logger", output_type="console",

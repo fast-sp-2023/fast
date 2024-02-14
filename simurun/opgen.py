@@ -3236,14 +3236,16 @@ def decl_function(G, node_id, func_name=None, obj_parent_scope=None,
         G.add_obj_as_prop('name', node_id, 'string', func_name, added_obj)
 
     param_list = G.get_child_nodes(node_id, edge_type='PARENT_OF',
-        child_type='AST_PARAM_LIST')[0]
-    params = G.get_ordered_ast_child_nodes(param_list)
-    length = len(params)
-    if length > 0:
-        if G.get_node_attr(params[-1]).get('flags:string[]') \
-            == 'PARAM_VARIADIC':
-            length -= 1
-    G.add_obj_as_prop('length', node_id, 'number', length, added_obj)
+        child_type='AST_PARAM_LIST')
+    if param_list:
+        param_list = param_list[0]
+        params = G.get_ordered_ast_child_nodes(param_list)
+        length = len(params)
+        if length > 0:
+            if G.get_node_attr(params[-1]).get('flags:string[]') \
+                == 'PARAM_VARIADIC':
+                length -= 1
+        G.add_obj_as_prop('length', node_id, 'number', length, added_obj)
 
     # G.set_node_attr(node_id, ("VISITED", "1"))
     logger.debug(f'{sty.ef.b}Declare function{sty.rs.all} {func_name} {node_id}'
